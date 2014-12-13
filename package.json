@@ -9,6 +9,7 @@
     "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs | uglifyjs > Build/www/bundle.js",
     "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
     "serve": "serve --compress -p 3333 Build/www",
+    "start-dev":"npm run serve & npm run watch",
     "lint-eslint": "eslint src/",
     "lint-jscs": "jscs src/",
     "lint": "npm run lint-eslint; npm run lint-jscs"
