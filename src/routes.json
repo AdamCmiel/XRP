@@ -1,0 +1,36 @@
+{
+    "newOpenSplash":"Open the app with the newly opened welcome message",
+
+    "showFirstTimeOptions":
+        "Show the options available to the user upon opening the app",
+
+    "alreadyOpenedSplash":"Open the app again, display options",
+
+    "home/:isDrawerOpen":"Actions availabile from the home view",
+
+    "createWalletConfirmation":"Modal view for creating new wallets",
+
+    "importWalletFromQRConfirmation":
+        "Confirm that the user wants to import a wallet",
+
+    "queryQRCodeForBalance":
+        "Use the camera to check an arbitrary wallet on the network",
+
+    "addContactStart":"First view shown when adding a contact",
+
+    "contactVerification/:contactID":"render iOS contacts in-app",
+
+    "sendMoneyStart":"First view shown when sending money",
+
+    "sendMoneyDestinationKnown/:toWalletID":
+        "After selecting destination wallet, choose origin wallet",
+
+    "sendMoneyConfirmation/:fromWalletID/:toWalletID":
+        "After selecting source and destination wallets, make payment",
+
+    "showContactsWithWallets":
+        "Show list of rendered contacts with their QR codes",
+
+    "walletFocusView/:walletID":
+        "Show information held by LSDB about wallet, takes data when called"
+}

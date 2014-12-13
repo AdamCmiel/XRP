@@ -1,30 +1,22 @@
 Engine = require 'famous/core/Engine'
-Surface = require 'famous/core/Surface'
 
-# Bootstrap Backbone
-Backbone = require "backbone"
-$ = require "jquery"
-Backbone.$ = $
-Backbone.LocalStorage = require "backbone.localstorage"
+# Register Spring Transition
+Transitionable = require "famous/transitions/Transitionable"
+SpringTransition = require "famous/transitions/SpringTransition"
+Transitionable.registerMethod "spring", SpringTransition
 
+# Set debug or production environment
+environment = "debug"
+window.log = require("./log")(environment)
+
+# Create context and set Perspective
 start = ->
     mainContext = Engine.createContext()
-    mainContext.setPerspective 1000
-    surface = new Surface
-        size: [200, 200]
-        content: 'click me!'
-        properties: backgroundColor: 'red'
+    mainContext.setPerspective 800
 
-    scanBarcode = ->
-        success = (message) ->
-            console.log message
-            surface.setContent message.text
-        failure = (message) ->
-            console.log message
-            surface.setContent JSON.stringify message
-        cordova.plugins.barcodeScanner.scan success, failure
-
-    surface.on 'click', scanBarcode
-    mainContext.add surface
+# Add app to the mainContext
+    AppController = require "./views/AppController"
+    mainContext.add new AppController
 
 document.addEventListener "deviceready", start, false
+
