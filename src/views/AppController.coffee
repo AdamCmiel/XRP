@@ -32,16 +32,12 @@ class AppController extends XView
 
     @add layout
 
-    @subscribe content
-    @subscribe drawer
-    @_eventInput.on "toggleMenu", =>
-      layout.toggle @options.layout.transition
-
-    @_eventInput.on "closeMenu", ->
-      layout.close()
-
     for route, routeWithoutParams of routes
         router.on route, getCallbackForRoute routeWithoutParams
+
+    @oldSubTree = null
+    @currentSubTree = null
+    @views = {}
 
 AppController.DEFAULT_OPTIONS =
   layout:
@@ -54,6 +50,38 @@ AppController.DEFAULT_OPTIONS =
       dampingRatio: 0.6
   sync:
     direction: TouchSync.DIRECTION_X
+
+# Push the current subtree to the old subtree, show the old
+# subtree in anticipation of the new
+AppController::rotateSubTree = ->
+    @oldSubTree = @currentSubTree
+    @content.show @oldSubtree, transition: no
+
+AppController::show = (subtree) ->
+    @rotateSubTree()
+    @oldSubTree.end()
+    @currentSubTree = subtree
+    @content.show @currentSubTree, transition: yes
+    subtree.start()
+
+AppController::openDrawer = (options) ->
+    @_moveDrawer "open", options
+
+AppController::closeDrawer = (options) ->
+    @_moveDrawer "close", options
+
+AppController::toggleDrawer = (options) ->
+    @_moveDrawer "toggle", options
+
+AppController::_moveDrawer = (method, options = {}) ->
+    switch options.transition
+        when no        then transition = undefined
+        when undefined then transition = @options.layout.transition
+        else                transition = options.transition
+    @layout[method] transition
+
+AppController::showWallet = (url) ->
+    alert "Implement this"
 
 # Set up prototype methods for route responses
 for _, route of routes

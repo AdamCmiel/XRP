@@ -4,7 +4,7 @@
     "showFirstTimeOptions":
         "Show the options available to the user upon opening the app",
 
-    "alreadyOpenedSplash":"Open the app again, display options",
+    "alreadyOpenedSplash":"Open the app again, then display home",
 
     "home/:isDrawerOpen":"Actions availabile from the home view",
 
@@ -31,6 +31,6 @@
     "showContactsWithWallets":
         "Show list of rendered contacts with their QR codes",
 
-    "walletFocusView/:walletID":
+    "walletFocus/:walletID":
         "Show information held by LSDB about wallet, takes data when called"
 }

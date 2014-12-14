@@ -6,7 +6,7 @@ SpringTransition = require "famous/transitions/SpringTransition"
 Transitionable.registerMethod "spring", SpringTransition
 
 # Set debug or production environment
-environment = "debug"
+window.__environment = environment = "debug"
 window.log = require("./log")(environment)
 
 # Create context and set Perspective

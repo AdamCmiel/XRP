@@ -4,12 +4,12 @@
   "description": "iOS client for Ripple network",
   "main": "src/index.coffee",
   "scripts": {
-    "test": "prova -t provify ./test/**/*.spec.js -b",
+    "test": "mocha --compilers coffee:coffee-script/register test/**/*",
     "start": "npm run build && cd Build && cordova run ios",
     "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs | uglifyjs > Build/www/bundle.js",
     "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
     "serve": "serve --compress -p 3333 Build/www",
-    "start-dev":"npm run serve & npm run watch",
+    "start-dev": "npm run serve & npm run watch",
     "lint-eslint": "eslint src/",
     "lint-jscs": "jscs src/",
     "lint": "npm run lint-eslint; npm run lint-jscs"
@@ -24,8 +24,10 @@
   "dependencies": {
     "backbone": "^1.1.2",
     "backbone.localstorage": "^1.1.14",
+    "bluebird": "^2.3.11",
     "brfs": "^1.1.1",
     "browserify": "^5.9.1",
+    "chai": "^1.10.0",
     "coffee-script": "^1.7.1",
     "coffeeify": "^0.7.0",
     "cssify": "^0.5.1",
@@ -35,10 +37,15 @@
     "jade": "^1.5.0",
     "jadeify": "^2.5.0",
     "jquery": "^2.1.1",
+    "mocha": "^2.0.1",
     "prova": "^2.1.1",
     "provify": "^0.1.3",
+    "should": "^4.4.1",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.6.0",
     "stylify": "^0.1.5",
     "stylus": "^0.47.3",
-    "uglifyjs": "^2.3.6"
+    "uglifyjs": "^2.3.6",
+    "xrp-app-lib": "^1.1.1"
   }
 }
