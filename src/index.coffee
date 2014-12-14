@@ -1,8 +1,8 @@
 # Include styles
-require './styles'
+require "./styles"
 
 # Include polyfills
-require 'famous-polyfills'
+require "famous-polyfills"
 
 # Include Famo.us App
-require './App'
+require "./App"

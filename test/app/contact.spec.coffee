@@ -3,15 +3,13 @@ Account = require "../../src/models/Account"
 {expect, assert, should, use} = require "chai"
 should()
 Backbone = require "backbone"
+XRP = require "xrp-app-lib"
 
 key = "rfemvFrpCAPc4hUa1v8mPRYdmaCqR1iFpe"
 
 describe "Contact Model", ->
 
-    account = new Account
-        account:
-            publicKey: key
-            balance: 0
+    account = new Account account: XRP.importAccountFromAddress key
 
     alice = new Contact
         name: "Alice Roberts"

@@ -5,7 +5,7 @@
   "main": "src/index.coffee",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register test/**/*",
-    "start": "npm run build && cd Build && cordova run ios",
+    "start": "npm run build && cd Build && cordova build",
     "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs | uglifyjs > Build/www/bundle.js",
     "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
     "serve": "serve --compress -p 3333 Build/www",

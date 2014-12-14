@@ -1,25 +1,21 @@
 Backbone = require "backbone"
-XRPLib = require "xrp-app-lib"
 ContactsLib = require "../lib/contacts.lib.coffee"
 
 Contact = Backbone.Model.extend
-    defaults: ->
+    defaults:
         id: 0
         name: ""
         email: ""
         account: null
 
     sync: (method, _, options) ->
-        switch method
-            when "read"
-                ContactsLib.find id.toString()
-                    .then (record) ->
-                        log record
-                        #call options.success with updated attributes
-                    .catch (failure) ->
-                        @destroy()
-
-            else log "model called sync with method #{method}", model.toJSON()
+        if method is "read"
+            ContactsLib.find id.toString()
+                .then (record) ->
+                    log record
+                    #call options.success with updated attributes
+                .catch (failure) ->
+                    @destroy()
 
 module.exports = Contact
 

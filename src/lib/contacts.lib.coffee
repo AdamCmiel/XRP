@@ -1,13 +1,8 @@
 Promise = require "bluebird"
-lib = {}
 
-`var navigator;`
-if navigator
-    fieldTypes = navigator.contacts.fieldType
-else
-    console.log "no navigator, don't try to access device apis"
+fieldTypes = navigator.contacts.fieldType
 
-lib.find = (queryString, fields) ->
+module.exports.find = (queryString, fields) ->
     options = new ContactFindOptions
     options.filter = queryString
     options.multiple = true
@@ -22,6 +17,4 @@ lib.find = (queryString, fields) ->
     queryFields.push fieldTypes[field] for field of fields
 
     Promise.new (res, rej) -> navigator.contacts.find queryFields, res, rej, options
-
-module.exports = lib
 

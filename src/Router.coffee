@@ -1,10 +1,7 @@
-# Bootstrap Backbone
 Backbone = require "backbone"
 $ = require "jquery"
 Backbone.$ = $
-Backbone.LocalStorage = require "backbone.localstorage"
-
-routes = require "./routes"
+window.__bb = Backbone
 
 class Router extends Backbone.Router
 
@@ -13,10 +10,8 @@ class Router extends Backbone.Router
     Backbone.history.start()
     log "Router created"
 
-  routes: routes
-
   # Add trigger: true to all routes
   navigate: (path) -> super path, trigger: true
 
-module.exports = router = new EBRouter
+module.exports = new Router
 
