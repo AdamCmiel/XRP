@@ -1,6 +1,6 @@
 XView = require "./XView"
 Surface = require "famous/core/Surface"
-DrawerLayout = require "./famousInternal/DrawerLayout"
+DrawerLayout = require "./drawer/DrawerLayout"
 TouchSync = require "famous/inputs/TouchSync"
 Drawer = require "./drawer/Drawer"
 Content = require "./content/Content"
