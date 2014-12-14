@@ -1,4 +1,4 @@
-AddContactStart = require "../static/AddContactStart"
+AddContactStart = require "../content/static/AddContactStart"
 
 # Prototype method for AppController
 addContactStart = ->

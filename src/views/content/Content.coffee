@@ -2,7 +2,7 @@ XView = require "../XView"
 
 Contact  = require "../../models/contact"
 Account  = require "../../models/account"
-# Wallet   = require "../../models/wallet"
+Wallet   = require "../../models/wallet"
 Contacts = require "../../collections/contacts"
 
 class Content extends XView
@@ -10,7 +10,7 @@ class Content extends XView
         super
         window.Contact = Contact
         window.Account = Account
-# window.Wallet = Wallet
+        window.Wallet = Wallet
         window.Contacts = Contacts
 
 Content.DEFAULT_OPTIONS =

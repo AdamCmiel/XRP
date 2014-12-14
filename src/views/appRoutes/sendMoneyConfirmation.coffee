@@ -1,4 +1,5 @@
-QR = require "../../QR.coffee"
+SendMoneyConfirmation = require "../content/dynamic/SendMoneyConfirmation"
+QR = require "../../lib/QR.coffee"
 # Prototype method for AppController
 
 sendMoneyConfirmation = (fromWalletID, toWalletID) ->
@@ -7,6 +8,6 @@ sendMoneyConfirmation = (fromWalletID, toWalletID) ->
         fromWallet: fromWalletID
         toWallet: toWalletID
 
-    QR.render()
+#QR.render()
 
 module.exports = sendMoneyConfirmation

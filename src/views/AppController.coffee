@@ -8,8 +8,8 @@ router = require "../Router"
 routes = require "../routes"
 
 # Helper for attaching routes to Controller
-#getCallbackForRoute = (route) ->
-#    @[routes[route]].bind @
+getCallbackForRoute = (route) ->
+    @[routes[route]].bind @
 
 ###*
  * Top Level App Controller
@@ -40,8 +40,8 @@ class AppController extends XView
  
         @add layout
  
-#for route, routeWithoutParams of routes
-#router.on route, getCallbackForRoute routeWithoutParams
+        for route, routeWithoutParams of routes
+            router.route route, routeWithoutParams, getCallbackForRoute.call @, routeWithoutParams
  
         @oldSubTree = null
         @currentSubTree = null
@@ -56,8 +56,8 @@ AppController.DEFAULT_OPTIONS =
             method: "spring"
             period: 450
             dampingRatio: 0.6
-# sync:
-#   direction: TouchSync.DIRECTION_X
+    sync:
+        direction: TouchSync.DIRECTION_X
 
 # Push the current subtree to the old subtree, show the old
 # subtree in anticipation of the new
@@ -92,9 +92,9 @@ AppController::showWallet = (url) ->
     alert "Implement this"
 
 # Set up prototype methods for route responses
-#for _, route of routes
-#    console.log "Routing:", _, route, "./appRoutes/#{route}"
-#    AppController::[route] = require "./appRoutes/#{route}"
+for _, route of routes
+    console.log "Routing:", _, route, "./appRoutes/#{route}"
+    AppController::[route] = require "./appRoutes/#{route}"
 
 ###*
  * @exports App

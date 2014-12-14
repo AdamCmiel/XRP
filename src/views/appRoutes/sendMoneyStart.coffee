@@ -1,5 +1,7 @@
+SendMoneyStart = require "../content/static/sentMoneyStart"
 # Prototype method for AppController
 
-sendMoneyStart = (param1) ->
+sendMoneyStart = ->
+    view = @views["sendMoneyStart"] ||= new SendMoneyStart
 
 module.exports = sendMoneyStart

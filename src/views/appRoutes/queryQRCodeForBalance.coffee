@@ -1,4 +1,4 @@
-QR = require "../../QR.coffee"
+QR = require "../../lib/QR.coffee"
 # Prototype method for AppController
 
 queryQRCodeForBalance = ->
